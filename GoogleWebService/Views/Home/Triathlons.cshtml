@@ -1,0 +1,55 @@
+﻿@model IList<Race>
+@using GoogleWebService.Models;
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div class="row">
+    <h1>Triathlon</h1>
+    <p class="lead">These are the results of the handful of races I have done plus predictions of up coming ones. The data is stored in a Google doc.
+    This is then accessed through OAuth and the Google API.</p>
+    <p class="lead">The future race results are estimated based on the existing results and linear curve fitting.</p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="timeChart_div"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+@foreach (var item in Model)
+{
+    <p  class="lead">
+        @item.Name
+        @item.RaceDate.Year
+        :
+        @(((TimeSpan)item.TotalTime).ToString(@"hh\:mm\:ss"))
+    </p>
+}
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div id="distChart_div"></div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var timeData = [['Year', 'Swim', 'Bike', 'Run']];
+    @foreach (var item in Model)
+    {
+        <text>
+        var thing = ['@item.RaceDisplay', @(((TimeSpan)item.SwimTime).TotalMinutes), @(((TimeSpan)item.BikeTime).TotalMinutes), @(((TimeSpan)item.RunTime).TotalMinutes)];
+        timeData.push(thing);
+        </text>
+    }
+
+    var distData = [['Year', 'Swim', 'Bike', 'Run']];
+    @foreach (var item in Model)
+    {
+        <text>
+        var thing = ['@item.RaceDisplay', @(item.SwimDistance/1000), @item.BikeDistance, @item.RunDistance];
+        distData.push(thing);
+        </text>
+    }
+
+</script>
+
+<script type="text/javascript" src="~/Scripts/charts.js"></script>

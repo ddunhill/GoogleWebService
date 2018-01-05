@@ -1,0 +1,36 @@
+﻿@model IEnumerable<GoogleWebService.Models.Visit>
+
+@{
+    ViewBag.Title = "Beers";
+}
+
+<h2>Beers</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.County)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brewer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beer)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.County)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brewer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Beer)
+        </td>
+    </tr>
+}
+
+</table>

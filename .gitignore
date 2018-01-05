@@ -3,6 +3,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Project Specific
+/GoogleWebService/App_Data/googleapi.json
+
 # User-specific files
 *.suo
 *.user
