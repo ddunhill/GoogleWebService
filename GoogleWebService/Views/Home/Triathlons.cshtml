@@ -6,26 +6,28 @@
     <p class="lead">These are the results of the handful of races I have done plus predictions of up coming ones. The data is stored in a Google doc.
     This is then accessed through OAuth and the Google API.</p>
     <p class="lead">The future race results are estimated based on the existing results and linear curve fitting.</p>
+    <p class="lead"><a href="https://github.com/ddunhill/GoogleWebService/blob/master/GoogleWebService/Models/Triathalon.cs" target="_blank">View the Code</a></p>
 </div>
 <div class="row">
+    <p class="lead">Races breakdown</p>
     <div class="col-md-12">
         <div id="timeChart_div"></div>
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+<p class="lead">Races with total time (hh/mm/ss)</p>
 @foreach (var item in Model)
 {
-    <p  class="lead">
+    <p>
         @item.Name
         @item.RaceDate.Year
         :
         @(((TimeSpan)item.TotalTime).ToString(@"hh\:mm\:ss"))
     </p>
 }
-    </div>
 </div>
 <div class="row">
+    <p class="lead">Races distance</p>
     <div class="col-md-12">
         <div id="distChart_div"></div>
     </div>
@@ -41,11 +43,11 @@
         </text>
     }
 
-    var distData = [['Year', 'Swim', 'Bike', 'Run']];
+    var distData = [['Race', 'Swim', 'Bike', 'Run']];
     @foreach (var item in Model)
     {
         <text>
-        var thing = ['@item.RaceDisplay', @(item.SwimDistance/1000), @item.BikeDistance, @item.RunDistance];
+        var thing = ['@item.RaceDisplay', @(item.SwimDistance), @item.BikeDistance, @item.RunDistance];
         distData.push(thing);
         </text>
     }

@@ -4,33 +4,41 @@
     ViewBag.Title = "Beers";
 }
 
-<h2>Beers</h2>
+<div class="row">
+    <h1>Beers</h1>
+    <p class="lead">
+        The data is stored in a Google doc. It is accessed through OAuth and the Google API.
+    </p>
+    <p class="lead"><a href="https://github.com/ddunhill/GoogleWebService/blob/master/GoogleWebService/Models/Google.cs" target="_blank">View the Code</a></p>
+</div>
+<div class="row">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.County)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brewer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beer)
+            </th>
+        </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.County)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Brewer)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Beer)
-        </th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.County)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brewer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Beer)
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.County)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Brewer)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Beer)
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+    </div>

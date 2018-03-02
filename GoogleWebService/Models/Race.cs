@@ -78,6 +78,6 @@ namespace GoogleWebService.Models
             }
         }
 
-        public string RaceDisplay => $"{RaceDate.Month}/{RaceDate.Year}:{Name}";
+        public string RaceDisplay => $"{Name} : {RaceDate.Month}/{RaceDate.Year}";
     }
 }
