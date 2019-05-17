@@ -87,7 +87,7 @@
 
         @foreach (var item in Model)
         {
-            <div style="position:absolute; @Html.DisplayFor(modelItem => item.Style) top: @Html.DisplayFor(modelItem => item.Top)%; Left:@Html.DisplayFor(modelItem => item.Left)%"><a href="#" onclick="showbeer('@Html.DisplayFor(modelItem => item.Name)','@Html.DisplayFor(modelItem => item.Brewer)','@Html.DisplayFor(modelItem => item.Beer)')" title="@Html.DisplayFor(modelItem => item.Name)">@Html.Raw(item.DisplayName)</a></div>
+            <div style="position:absolute; @Html.DisplayFor(modelItem => item.Style) top: @Html.DisplayFor(modelItem => item.Top)%; Left:@Html.DisplayFor(modelItem => item.Left)%"><a href="#" onclick="showbeer(this)" county="@Html.DisplayFor(modelItem => item.Name)" brewer="@Html.DisplayFor(modelItem => item.Brewer)" beer="@Html.DisplayFor(modelItem => item.Beer)" title="@Html.DisplayFor(modelItem => item.Name)">@Html.Raw(item.DisplayName)</a></div>
         }
 
 
@@ -124,14 +124,14 @@
             }
         }
 
-        function showbeer(name, brewery, beer) {
+        function showbeer(ctl) {
             modal.style.display = "block";
             var captionText = document.getElementById("name");
-            captionText.innerHTML = name;
+            captionText.innerHTML = ctl.attributes["county"].value;
             var brewerText = document.getElementById("brewer");
-            brewerText.innerHTML = brewery;
+            brewerText.innerHTML = ctl.attributes["brewer"].value;
             var beerText = document.getElementById("beer");
-            beerText.innerHTML = beer;
+            beerText.innerHTML = ctl.attributes["beer"].value;
             return false;
         }
     </script>
