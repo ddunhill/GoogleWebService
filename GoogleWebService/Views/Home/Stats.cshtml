@@ -1,0 +1,63 @@
+﻿@model IList<Race>
+@using GoogleWebService.Models;
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<div class="container">
+    <h1>Triathlon - Stats</h1>
+    <p class="lead">These are the results of the handful of races I have done plus predictions of up coming ones. The data is stored in a Google doc.
+    This is then accessed through OAuth and the Google API.</p>
+    <p class="lead">The future race results are estimated based on the existing results and linear curve fitting.</p>
+    <p class="lead"><a href="https://github.com/ddunhill/GoogleWebService/blob/master/GoogleWebService/Models/Triathalon.cs" target="_blank">View the Code</a></p>
+</div>
+<div class="container">
+    <p class="lead">Races with timings (hh/mm/ss)</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Race</th>
+                <th>Swim (hh/mm/ss)</th>
+                <th>Bike (hh/mm/ss)</th>
+                <th>Run (hh/mm/ss)</th>
+                <th>Total (hh/mm/ss)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="@(item.Estimated ? "danger" : "success")">
+                    <td>@item.RaceDisplay</td>
+                    <td>@(((TimeSpan)item.SwimTime).ToString(@"h\:mm\:ss"))</td>
+                    <td>@(((TimeSpan)item.BikeTime).ToString(@"h\:mm\:ss"))</td>
+                    <td>@(((TimeSpan)item.RunTime).ToString(@"h\:mm\:ss"))</td>
+                    <td>@(((TimeSpan)item.TotalTime).ToString(@"h\:mm\:ss"))</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+<div class="container">
+    <p class="lead">Races distances</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Race</th>
+                <th>Swim (km)</th>
+                <th>Bike (km)</th>
+                <th>Run (km)</th>
+                <th>Total (km)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="@(item.Estimated ? "danger" : "success")">
+                    <td>@item.RaceDisplay</td>
+                    <td>@item.SwimDistance</td>
+                    <td>@item.BikeDistance</td>
+                    <td>@item.RunDistance</td>
+                    <td>@item.TotalDistance</td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+</div>

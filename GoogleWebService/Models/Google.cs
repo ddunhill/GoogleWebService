@@ -31,7 +31,7 @@ namespace GoogleWebService.Models
         public IList<IList<Object>> GetBeerData()
         {
             String beersheetId = "1lytEf1Rf7uhFC_ADg3iaeF1nyadjd0PXwvQE1Qd5HYI";
-            String beerrange = "England!A:C";
+            String beerrange = "England!A1:L48";
             return GetData(beersheetId, beerrange);
         }
 

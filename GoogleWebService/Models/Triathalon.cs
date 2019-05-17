@@ -45,6 +45,7 @@ namespace GoogleWebService.Models
                     Graph r = rset.RunLine;
                     item.RunVelocity = r.Intercept + r.Slope * x;
                     item.TotalTime = t1avg + t2avg + item.RunTime + item.BikeTime + item.SwimTime;
+                    item.Estimated = true;
                 }
             }
             return rset;

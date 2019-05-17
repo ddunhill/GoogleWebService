@@ -20,7 +20,9 @@ namespace GoogleWebService.Models
         public string SwimDescription { get; set; }
         public string Notes { get; set; }
         public string RaceClass { get; set; }
+        public bool Estimated { get; set; }
 
+        public double TotalDistance { get { return SwimDistance + BikeDistance + RunDistance; } }
         public double SwimVelocity
         {
             get

@@ -1,0 +1,139 @@
+﻿@model IEnumerable<GoogleWebService.Models.Visit>
+
+@{
+    ViewBag.Title = "BeersMap";
+    Layout = null;
+}
+
+<html lang="en" dir="ltr">
+<head>
+    <style>
+        div {
+            font-family: sans-serif;
+            color: #0645ad;
+            font-size: 85%
+        }
+
+        a {
+            text-decoration: none;
+            line-height: 1
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-image: url('@Url.Content("~/images/beer.svg")');
+            background-repeat: no-repeat;
+                        background-attachment: fixed;
+                        background-position: center;
+                        background-color: rgb(0,0,0); /* Fallback color */
+                        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                    }
+
+        /* Modal Content */
+        .modal-content {
+            margin: auto;
+            padding: 20px;
+            padding-top: 150px;
+            width: 20%;
+            color: white;
+            text-align: center;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        p.county {
+            font-family: "Rockwell Extra Bold";
+            font-size: 20px;
+        }
+
+        p.drink {
+            font: "century gothic";
+            font-style: italic;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div role="img" style="text-align: center; position: relative; width=90%">
+        <img alt="" src="@Url.Content("~/images/English_ceremonial_counties_1998.svg")" style="width : 100%">
+
+        <div style="position:absolute; left:94.2%; top:1.5%">
+            <a href="https://en.wikipedia.org/wiki/File:English_ceremonial_counties_1998.svg" title="image attribution">
+                <img alt="image attribution" src="@Url.Content("~/images/30px-Circle-information.png")" decoding="async" width="20" height="20">
+            </a>
+        </div>
+
+        @foreach (var item in Model)
+        {
+            <div style="position:absolute; @Html.DisplayFor(modelItem => item.Style) top: @Html.DisplayFor(modelItem => item.Top)%; Left:@Html.DisplayFor(modelItem => item.Left)%"><a href="#" onclick="showbeer('@Html.DisplayFor(modelItem => item.Name)','@Html.DisplayFor(modelItem => item.Brewer)','@Html.DisplayFor(modelItem => item.Beer)')" title="@Html.DisplayFor(modelItem => item.Name)">@Html.Raw(item.DisplayName)</a></div>
+        }
+
+
+        <div style="position:absolute; top: 97.13%; Left:0.7%">Not shown: </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p class="county" id="name"></p>
+            <p class="drink"><span id="beer"></span> by <span id="brewer"></span></p>
+        </div>
+
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+
+        // When the user clicks on <span> (x), close the modal
+        // When the user clicks anywhere outside of the modal, close it
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        function showbeer(name, brewery, beer) {
+            modal.style.display = "block";
+            var captionText = document.getElementById("name");
+            captionText.innerHTML = name;
+            var brewerText = document.getElementById("brewer");
+            brewerText.innerHTML = brewery;
+            var beerText = document.getElementById("beer");
+            beerText.innerHTML = beer;
+            return false;
+        }
+    </script>
+</body>
+</html>

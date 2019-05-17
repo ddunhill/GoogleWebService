@@ -15,7 +15,7 @@ namespace GoogleWebService.Models
             {
                 foreach (var row in values)
                 {
-                    if (row.Count > 2)
+                    if (row.Count > 3)
                     {
                         rset.Add(ProccessVisit(row));
                     }
@@ -31,7 +31,13 @@ namespace GoogleWebService.Models
             {
                 County = row[0].ToString(),
                 Brewer = row[1].ToString(),
-                Beer = row[2].ToString()
+                Beer = row[2].ToString(),
+                Key = row[5].ToString(),
+                Name = row[6].ToString(),
+                DisplayName = row[7].ToString(),
+                Style = row[9].ToString(),
+                Left = row[10].ToString(),
+                Top = row[11].ToString(),
             };
             return working;
         }

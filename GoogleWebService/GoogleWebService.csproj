@@ -222,6 +222,9 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="images\30px-Circle-information.png" />
+    <Content Include="images\beer.svg" />
+    <Content Include="images\English_ceremonial_counties_1998.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -275,6 +278,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Triathlons.cshtml" />
     <Content Include="Views\Home\Beers.cshtml" />
+    <Content Include="Views\Home\Stats.cshtml" />
+    <Content Include="Views\Home\BeersMap.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

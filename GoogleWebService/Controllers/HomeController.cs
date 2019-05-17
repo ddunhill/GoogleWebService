@@ -21,7 +21,25 @@ namespace GoogleWebService.Controllers
             return View(tris);
         }
 
+        public ActionResult Stats()
+        {
+            ViewBag.Title = "Stats";
+            GoogleClass gg = new GoogleClass();
+            Triathalon tt = new Triathalon();
+            IList<Race> tris = tt.ProcessValues(gg.GetTriData());
+            return View(tris);
+        }
+
         public ActionResult Beers()
+        {
+            ViewBag.Title = "Beers";
+            GoogleClass gg = new GoogleClass();
+            Pubs pp = new Pubs();
+            IList<Visit> beers = pp.ProcessValues(gg.GetBeerData());
+            return View(beers);
+        }
+
+        public ActionResult BeersMap()
         {
             ViewBag.Title = "Beers";
             GoogleClass gg = new GoogleClass();
